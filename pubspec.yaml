@@ -8,7 +8,13 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutter
+    sdk: flutter    
+
+  hotkey_manager: ^0.2.3
+  clipboard: ^0.1.3
+  http: ^1.2.2
+  flutter_dotenv: ^5.2.1
+  shared_preferences: ^2.3.3
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +23,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - .env
