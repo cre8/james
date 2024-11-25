@@ -7,6 +7,7 @@ import 'package:james/ai/dummy.dart';
 import 'package:james/ai/openapi.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ai_service.dart';
+import 'text_selection.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -93,6 +94,9 @@ class TextUpdaterScreenState extends State<TextUpdaterScreen> {
     await hotKeyManager.register(
       HotKey(key: PhysicalKeyboardKey.keyN, modifiers: [HotKeyModifier.meta]),
       keyDownHandler: (hotKey) async {
+        final selectedText = await TextSelection2.getSelectedText();
+        print('Selected Text: $selectedText');
+        return;
         String copiedText = await FlutterClipboard.paste();
         setState(() {
           _originalTextController.text = copiedText;
