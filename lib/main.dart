@@ -92,7 +92,8 @@ class TextUpdaterScreenState extends State<TextUpdaterScreen> {
   /// Register the hot key to paste the clipboard text
   Future<void> _registerHotKey() async {
     await hotKeyManager.register(
-      HotKey(key: PhysicalKeyboardKey.keyN, modifiers: [HotKeyModifier.meta]),
+      HotKey(
+          key: PhysicalKeyboardKey.keyN, modifiers: [HotKeyModifier.control]),
       keyDownHandler: (hotKey) async {
         final selectedText = await TextSelection2.getSelectedText();
         print('Selected Text: $selectedText');
