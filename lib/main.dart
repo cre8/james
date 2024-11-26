@@ -97,10 +97,9 @@ class TextUpdaterScreenState extends State<TextUpdaterScreen> {
       keyDownHandler: (hotKey) async {
         final selectedText = await TextSelection2.getSelectedText();
         print('Selected Text: $selectedText');
-        return;
-        String copiedText = await FlutterClipboard.paste();
+        //String copiedText = await FlutterClipboard.paste();
         setState(() {
-          _originalTextController.text = copiedText;
+          _originalTextController.text = selectedText ?? '';
         });
 
         await _transformText();
