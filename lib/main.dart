@@ -95,7 +95,23 @@ class TextUpdaterScreenState extends State<TextUpdaterScreen> {
       HotKey(
           key: PhysicalKeyboardKey.keyN, modifiers: [HotKeyModifier.control]),
       keyDownHandler: (hotKey) async {
-        final selectedText = await TextSelection2.getSelectedText();
+        final clipboardData = await Clipboard.getData('text/plain');
+        if (clipboardData != null && clipboardData.text != null) {
+          setState(() {
+            _originalTextController =
+                TextEditingController(text: clipboardData.text);
+          });
+          print('Captured Text: ${clipboardData.text}');
+        } else {
+          print('No text found in clipboard.');
+        }
+        print('Hot key pressed');
+      },
+    );
+  }
+
+  /**
+   *   final selectedText = await TextSelection2.getSelectedText();
         print('Selected Text: $selectedText');
         return;
         String copiedText = await FlutterClipboard.paste();
@@ -104,9 +120,7 @@ class TextUpdaterScreenState extends State<TextUpdaterScreen> {
         });
 
         await _transformText();
-      },
-    );
-  }
+   */
 
   /// Transform the text using the selected AI service
   Future<void> _transformText() async {
