@@ -22,13 +22,15 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSAccessibilityAllowForeignApps</key>
+	<true/>
+	<key>NSAccessibilityUsageDescription</key>
+	<string>This app needs accessibility permissions to retrieve selected text from other applications.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>$(PRODUCT_COPYRIGHT)</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>NSAccessibilityUsageDescription</key>
-	<string>This app needs accessibility permissions to retrieve selected text from other applications.</string>
 </dict>
 </plist>

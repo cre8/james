@@ -38,10 +38,10 @@ class AppDelegate: FlutterAppDelegate {
         }
 
       func getSelectedText() -> String? {
-        if !AXIsProcessTrusted() {
+/*         if !AXIsProcessTrusted() {
             print("Accessibility permissions are not granted.")
             return nil
-        }
+        } */
 
         guard let focusedApp = NSWorkspace.shared.frontmostApplication else {
             print("No focused application found.")
@@ -55,8 +55,7 @@ class AppDelegate: FlutterAppDelegate {
         // Get the focused UI element
         let focusedResult = AXUIElementCopyAttributeValue(axApp, kAXFocusedUIElementAttribute as CFString, &focusedElement)
         if focusedResult != .success {
-            print("Failed to get focused element from the app: \(focusedResult.rawValue)")
-            return nil
+            return "Failed to get focused element from the app: \(focusedResult.rawValue)"            
         }
 
         guard let element = focusedElement else {
